@@ -21,10 +21,8 @@ def greedy(s: list[int], start_idx: int, n: int) -> int:
     # Repeat until n is 0
     if n == 0:
         return 0
-    elif n == 1:
-        seq = s[start_idx:]
-    else:
-        seq = s[start_idx : -(n - 1)]
+
+    seq = s[start_idx : len(s) - n + 1]
     max_idx = start_idx + max(enumerate(seq), key=lambda x: x[1])[0]
     max_val = s[max_idx]
     return max_val * 10 ** (n - 1) + greedy(s, max_idx + 1, n - 1)
