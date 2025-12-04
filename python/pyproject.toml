@@ -2,4 +2,7 @@
 name = "aoc25"
 version = "0.1.0"
 requires-python = ">=3.13"
-dependencies = []
+dependencies = [
+    "numpy>=2.3.5",
+    "scipy>=1.16.3",
+]
