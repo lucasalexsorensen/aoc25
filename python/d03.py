@@ -1,6 +1,6 @@
-import sys
+from utils import file_path
 
-with open(f"../{"test-" if "-t" in sys.argv else ""}data/d03.txt", "r") as file:
+with open(file_path(day=3), "r") as file:
     banks = [[int(c) for c in line.strip()] for line in file.readlines()]
 
 result = sum(

@@ -1,8 +1,9 @@
-import sys
 from collections import defaultdict
 from copy import deepcopy
 
-with open(f"../{"test-" if "-t" in sys.argv else ""}data/d04.txt", "r") as f:
+from utils import file_path
+
+with open(file_path(day=4), "r") as f:
     grid = defaultdict(str) | {
         complex(r, c): char
         for r, line in enumerate(f.readlines())

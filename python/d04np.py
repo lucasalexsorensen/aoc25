@@ -1,9 +1,8 @@
-import sys
-
 import numpy as np
 from scipy.signal import convolve2d
+from utils import file_path
 
-with open(f"../{"test-" if "-t" in sys.argv else ""}data/d04.txt", "r") as f:
+with open(file_path(day=4), "r") as f:
     grid = np.array([[*line.strip()] for line in f.readlines()]) == "@"
 
 kernel = np.array([[1, 1, 1], [1, 0, 1], [1, 1, 1]])

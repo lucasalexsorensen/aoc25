@@ -1,7 +1,8 @@
 import re
-import sys
 
-with open(f"../{"test-" if "-t" in sys.argv else ""}data/d02.txt", "r") as file:
+from utils import file_path
+
+with open(file_path(day=2), "r") as file:
     ranges = [
         range(int(p.split("-")[0]), int(p.split("-")[1]) + 1)
         for p in file.read().strip().split(",")
