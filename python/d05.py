@@ -1,5 +1,3 @@
-from copy import deepcopy
-
 from utils import file_path
 
 with open(file_path(day=5), "r") as f:
@@ -10,7 +8,7 @@ with open(file_path(day=5), "r") as f:
     ]
     ingredients = [int(line) for line in ingredients_part.splitlines()]
 
-print("p1", sum(any(x in r for r in ranges) for x in ingredients))
+print("p1", sum(any(i in r for r in ranges) for i in ingredients))
 
 
 sorted_ranges = sorted(ranges, key=lambda x: x.start)
