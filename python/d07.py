@@ -1,5 +1,3 @@
-from enum import StrEnum
-
 from utils import file_path
 
 with open(file_path(day=7), "r") as f:
