@@ -7,7 +7,7 @@ with open(file_path(day=8), "r") as f:
 
 
 def distance(a: tuple[int, ...], b: tuple[int, ...]) -> float:
-    return math.sqrt(sum((a[i] - b[i]) ** 2 for i in range(len(a))))
+    return math.sqrt(sum((a - b) ** 2 for a, b in zip(a, b)))
 
 
 distances = {
@@ -18,7 +18,7 @@ distances = {
 }
 
 
-def cluster(distances, n: int | None = None) -> list[set[int]]:
+def cluster(n: int | None = None) -> list[set[int]]:
     clusters = [{i} for i in range(len(numbers))]
     for (i, j), _ in sorted(distances.items(), key=lambda x: x[1])[
         : n or len(distances)
@@ -43,6 +43,6 @@ def cluster(distances, n: int | None = None) -> list[set[int]]:
     return clusters
 
 
-cluster_sizes = sorted(len(c) for c in cluster(distances, 1000))
+cluster_sizes = sorted(len(c) for c in cluster(n=1000))
 print("p1", math.prod(cluster_sizes[-3:]))
-cluster(distances, None)
+cluster(n=None)
