@@ -23,10 +23,7 @@ def generate_repeated_patterns(seq_len: int, force_twice: bool = False):
 
 
 twice_sequences = [
-    s
-    for i in range(2, 11)
-    if i % 2 == 0
-    for s in generate_repeated_patterns(i, force_twice=True)
+    s for i in range(2, 11, 2) for s in generate_repeated_patterns(i, force_twice=True)
 ]
 twice_sequences = sorted(set(twice_sequences))
 

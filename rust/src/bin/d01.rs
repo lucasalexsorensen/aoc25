@@ -1,8 +1,8 @@
 use anyhow::Result;
+use aoc25::day_input;
 
 fn main() -> Result<()> {
-    let input = include_str!("../../../data/d01.txt");
-
+    let input = day_input!("01");
     println!("part one: {}", part_one(input)?);
     println!("part two: {}", part_two(input)?);
     Ok(())

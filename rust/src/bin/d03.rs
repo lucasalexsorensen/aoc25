@@ -1,13 +1,10 @@
 use anyhow::{Result, anyhow};
+use aoc25::day_input;
 
 type Bank = Vec<u8>;
 
 fn main() -> Result<()> {
-    let input = if cfg!(feature = "test") {
-        include_str!("../../../test-data/d03.txt")
-    } else {
-        include_str!("../../../data/d03.txt")
-    };
+    let input = day_input!("03");
     let banks = parse_input(input)?;
     println!("part one: {}", part_one(&banks)?);
     println!("part two: {}", part_two(&banks)?);

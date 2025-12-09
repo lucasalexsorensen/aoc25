@@ -1,13 +1,13 @@
 use anyhow::Result;
-use aoc25::utils::load::load_input;
+use aoc25::day_input;
 
 use std::collections::HashMap;
 
 type ParsedInput = HashMap<(i32, i32), char>;
 
 fn main() -> Result<()> {
-    let input = load_input(4)?;
-    let parsed = parse_input(&input);
+    let input = day_input!("04");
+    let parsed = parse_input(input);
     println!("part one: {}", part_one(&parsed)?);
     println!("part two: {}", part_two(&parsed)?);
     Ok(())

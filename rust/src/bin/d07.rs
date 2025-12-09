@@ -1,10 +1,10 @@
 use anyhow::{Result, anyhow};
-use aoc25::utils::load::load_input;
+use aoc25::day_input;
 
 fn main() -> Result<()> {
-    let input = load_input(7)?;
+    let input = day_input!("07");
 
-    let (part_one, part_two) = solve(&input).ok_or(anyhow!("no solution"))?;
+    let (part_one, part_two) = solve(input).ok_or(anyhow!("no solution"))?;
     println!("part one: {}", part_one);
     println!("part two: {}", part_two);
 

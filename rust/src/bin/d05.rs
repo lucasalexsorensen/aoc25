@@ -1,8 +1,8 @@
 use anyhow::{Result, anyhow};
-use aoc25::utils::load::load_input;
+use aoc25::day_input;
 
 fn main() -> Result<()> {
-    let input = load_input(5)?;
+    let input = day_input!("05");
     let (ranges, ingredients) = parse_input(&input)?;
     println!("part one: {}", part_one(&ranges, &ingredients));
     println!("part two: {}", part_two(ranges)?);
