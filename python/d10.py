@@ -4,8 +4,7 @@ from ortools.linear_solver import pywraplp
 from utils import file_path
 
 type Machine = tuple[int, list[int], list[int]]
-solver = pywraplp.Solver.CreateSolver("SAT")
-inf = solver.infinity()
+solver = pywraplp.Solver.CreateSolver("CP_SAT")
 
 
 def parse_button(button: str, width: int) -> int:
@@ -48,20 +47,16 @@ print("p1", sum(shortest_path_xor(m) for m in machines))
 def shortest_path_joltage(machine: Machine) -> int:
     _, buttons, target = machine
     T = len(target)
-    # convert from buttons (1,3) to masks [0,1,0,1]
-    # shape is (M, T), where M is the number of masks and T is the dimensionality of the target
-    masks = [[int(c) for c in f"{b:0{T}b}"] for b in buttons]
+    # convert from buttons to masks, e.g. (1,3) => [0,1,0,1]
+    masks = [[int(c) for c in f"{b:0{T}b}"] for b in buttons]  # shape is (M, T)
     M = len(masks)
     # c_i => number of times we use mask i
-    c = {m: solver.IntVar(0, inf, f"c_{m}") for m in range(M)}
-
+    c = {m: solver.IntVar(0, solver.infinity(), f"c_{m}") for m in range(M)}
     # add an equality constraint for each position in the target
     for t in range(T):
         solver.Add(solver.Sum(c[m] * masks[m][t] for m in range(M)) == target[t])
-
     # objective is to minimize the number of masks used
     solver.Minimize(solver.Sum(c[m] for m in range(M)))
-
     solver.Solve()
     return int(solver.Objective().Value())
 
