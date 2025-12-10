@@ -29,16 +29,16 @@ with open(file_path(day=10), "r") as file:
 
 def shortest_path_xor(machine: Machine) -> int:
     target, buttons, _ = machine
-    queue = deque([(b, [b]) for b in buttons])
+    queue = deque([(b, 1) for b in buttons])
     seen = set()
     while queue:
-        state, path = queue.popleft()
+        state, n_moves = queue.popleft()
         if state in seen:
             continue
         seen.add(state)
         if state == target:
-            return len(path)
-        queue.extend((state ^ b, path + [b]) for b in buttons)
+            return n_moves
+        queue.extend((state ^ b, n_moves + 1) for b in buttons)
     return 0
 
 
