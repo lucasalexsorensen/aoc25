@@ -13,15 +13,13 @@ with open(file_path(day=11), "r") as file:
     }
 
 
-def dfs(node: str, seen: set[str]) -> int:
-    if node in seen:
-        return 0
+def dfs(node: str) -> int:
     if node == "out":
         return 1
-    return sum(dfs(n, seen | {node}) for n in connections[node])
+    return sum(dfs(n) for n in connections[node])
 
 
-print("p1", dfs("you", set()))
+print("p1", dfs("you"))
 
 
 def topo_sort() -> list[str]:
