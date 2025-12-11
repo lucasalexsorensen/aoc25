@@ -15,18 +15,18 @@ with open(file_path(day=11), "r") as file:
 
 
 @cache
-def dfs(node: str, target: str) -> int:
+def n_paths(node: str, target: str) -> int:
     if node == target:
         return 1
-    return sum(dfs(n, target) for n in connections.get(node, []))
+    return sum(n_paths(n, target) for n in connections.get(node, []))
 
 
-print("p1", dfs("you", "out"))
+print("p1", n_paths("you", "out"))
 
 print(
     "p2",
     sum(
-        prod(dfs(s, t) for s, t in pairwise(steps))
+        prod(n_paths(s, t) for s, t in pairwise(steps))
         for steps in [
             ("svr", "fft", "dac", "out"),
             ("svr", "dac", "fft", "out"),
