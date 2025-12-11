@@ -1,4 +1,5 @@
 from collections import defaultdict, deque
+from functools import cache
 from itertools import pairwise
 from math import prod
 
@@ -13,6 +14,7 @@ with open(file_path(day=11), "r") as file:
     }
 
 
+@cache
 def dfs(node: str) -> int:
     if node == "out":
         return 1
