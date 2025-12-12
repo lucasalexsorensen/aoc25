@@ -13,4 +13,6 @@ dependencies = [
 dev = [
     "ipykernel>=7.1.0",
     "matplotlib>=3.10.7",
+    "networkx>=3.6.1",
+    "tqdm>=4.67.1",
 ]
